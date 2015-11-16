@@ -36,6 +36,7 @@
 * **GIT õpetus:** [Become a git guru.](https://www.atlassian.com/git/tutorials/)
 * **Abimaterjale:** [Veebirakenduste loomine PHP ja MySQLi abil](http://minitorn.tlu.ee/~jaagup/kool/java/loeng/veebipr/veebipr1.pdf), [PHP with MySQL Essential Training] (http://www.lynda.com/MySQL-tutorials/PHP-MySQL-Essential-Training/119003-2.html)
 <<<<<<< HEAD
+<<<<<<< HEAD
 Jaan on kala
 // fuk yoo swjkfjhjkshdfhewiuuifhlksjflk
 =======
@@ -52,3 +53,5 @@ Probleemid
  - esmane tutvus teha isetegevusega poe loomisel
  - saada praktikat nii html, css, php kui ka mysql-iga
  - saada aru smth smth
+=======
+
