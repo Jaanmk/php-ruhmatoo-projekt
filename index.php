@@ -4,7 +4,7 @@
 	$page_file_name = "index.php";
 if(isset($_GET["logout"])){
         session_destroy();
-        header("Location: index.php")
+        header("Location: index.php");
     }
 if(isset($_SESSION['logged_in_user_id'])){
 		echo "Tere, ",$_SESSION['logged_in_user_email'], "<a href='?logout=1'> Logi välja</a>";
