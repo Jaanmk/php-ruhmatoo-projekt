@@ -57,3 +57,5 @@ Funktsionaalsus
  - v0.4 Admini ligipääs
  - v0.5 Lehekülje disain
  - v0.6 Ostuvõimalus 
+Tabelid
+ - Mysql.tabel.sql
