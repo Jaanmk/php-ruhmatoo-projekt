@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.11
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Loomise aeg: Nov 16, 2015 kell 02:02 PM
--- Serveri versioon: 5.5.46
--- PHP versioon: 5.4.43
+-- Host: d49803.mysql.zone.ee
+-- Loomise aeg: Nov 16, 2015 kell 02:56 PM
+-- Serveri versioon: 10.0.22-MariaDB-log
+-- PHP versioon: 5.5.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,47 +17,99 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Andmebaas: `if15_harjutus123`
+-- Andmebaas: `d49803sd107026`
 --
 
 -- --------------------------------------------------------
 
 --
--- Tabeli struktuur tabelile `kasutajad`
+-- Tabeli struktuur tabelile `merchandise`
 --
 
-CREATE TABLE IF NOT EXISTS `kasutajad` (
-  `ID` int(11) NOT NULL,
-  `nimi` varchar(256) COLLATE utf8_estonian_ci NOT NULL,
-  `aadress` varchar(256) COLLATE utf8_estonian_ci NOT NULL,
-  `email` varchar(256) COLLATE utf8_estonian_ci NOT NULL,
-  `telefon` varchar(256) COLLATE utf8_estonian_ci NOT NULL,
-  `loomiskuupäev` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_estonian_ci;
-
--- --------------------------------------------------------
-
---
--- Tabeli struktuur tabelile `kaubad`
---
-
-CREATE TABLE IF NOT EXISTS `kaubad` (
-  `hindjuurde` int(11) NOT NULL,
-  `kaal` int(11) NOT NULL COMMENT 'kg',
-  `nimetus` varchar(256) COLLATE utf8_estonian_ci NOT NULL,
-  `pikkus` int(11) NOT NULL COMMENT 'cm',
-  `laius` int(11) NOT NULL COMMENT 'cm',
-  `kõrgus` int(11) NOT NULL COMMENT 'cm',
+CREATE TABLE `merchandise` (
+  `price_added` int(11) NOT NULL,
+  `item_weight` int(11) NOT NULL COMMENT 'kg',
+  `item_name` varchar(256) COLLATE utf8_estonian_ci NOT NULL,
+  `item_length` int(11) NOT NULL COMMENT 'cm',
+  `item_height` int(11) NOT NULL COMMENT 'cm',
+  `item_width` int(11) NOT NULL COMMENT 'cm',
   `ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_estonian_ci;
 
 -- --------------------------------------------------------
 
 --
--- Tabeli struktuur tabelile `käibemaks`
+-- Tabeli struktuur tabelile `orders`
 --
 
-CREATE TABLE IF NOT EXISTS `käibemaks` (
+CREATE TABLE `orders` (
+  `ID` int(11) NOT NULL,
+  `items_in` int(11) NOT NULL,
+  `price_in` int(11) NOT NULL,
+  `date` date DEFAULT NULL,
+  `supplier` varchar(256) COLLATE utf8_estonian_ci NOT NULL,
+  `storage_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_estonian_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tabeli struktuur tabelile `sales`
+--
+
+CREATE TABLE `sales` (
+  `ID` int(11) NOT NULL,
+  `buyierid` int(11) NOT NULL,
+  `ammountbought` int(11) NOT NULL COMMENT 'palju klient ostab'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_estonian_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tabeli struktuur tabelile `statistics`
+--
+
+CREATE TABLE `statistics` (
+  `ID` int(11) NOT NULL,
+  `workdaybeginning` datetime NOT NULL,
+  `workdayend` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_estonian_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tabeli struktuur tabelile `storage`
+--
+
+CREATE TABLE `storage` (
+  `ID` int(11) NOT NULL,
+  `merchandiseid` int(11) NOT NULL,
+  `noinstorage` int(11) NOT NULL,
+  `location` varchar(256) COLLATE utf8_estonian_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_estonian_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tabeli struktuur tabelile `users`
+--
+
+CREATE TABLE `users` (
+  `ID` int(11) NOT NULL,
+  `first_name` varchar(256) COLLATE utf8_estonian_ci NOT NULL,
+  `address` varchar(256) COLLATE utf8_estonian_ci NOT NULL,
+  `email` varchar(256) COLLATE utf8_estonian_ci NOT NULL,
+  `phonenr` varchar(256) COLLATE utf8_estonian_ci NOT NULL,
+  `creation_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_estonian_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tabeli struktuur tabelile `VAT`
+--
+
+CREATE TABLE `VAT` (
   `0` float NOT NULL,
   `9` float NOT NULL,
   `20` float NOT NULL
@@ -66,68 +118,16 @@ CREATE TABLE IF NOT EXISTS `käibemaks` (
 -- --------------------------------------------------------
 
 --
--- Tabeli struktuur tabelile `ladu`
+-- Tabeli struktuur tabelile `workers`
 --
 
-CREATE TABLE IF NOT EXISTS `ladu` (
+CREATE TABLE `workers` (
   `ID` int(11) NOT NULL,
-  `tooteid` int(11) NOT NULL,
-  `kogusladu` int(11) NOT NULL,
-  `asukoht` varchar(256) COLLATE utf8_estonian_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_estonian_ci;
-
--- --------------------------------------------------------
-
---
--- Tabeli struktuur tabelile `müük`
---
-
-CREATE TABLE IF NOT EXISTS `müük` (
-  `ID` int(11) NOT NULL,
-  `ostjaid` int(11) NOT NULL,
-  `kogusost` int(11) NOT NULL COMMENT 'palju klient ostab'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_estonian_ci;
-
--- --------------------------------------------------------
-
---
--- Tabeli struktuur tabelile `statistika`
---
-
-CREATE TABLE IF NOT EXISTS `statistika` (
-  `ID` int(11) NOT NULL,
-  `tööalgus` datetime NOT NULL,
-  `töölõpp` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_estonian_ci;
-
--- --------------------------------------------------------
-
---
--- Tabeli struktuur tabelile `tellimused`
---
-
-CREATE TABLE IF NOT EXISTS `tellimused` (
-  `ID` int(11) NOT NULL,
-  `kogussisse` int(11) NOT NULL,
-  `hindsisse` int(11) NOT NULL,
-  `kuupäev` date DEFAULT NULL,
-  `tarnija` varchar(256) COLLATE utf8_estonian_ci NOT NULL,
-  `laoid` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_estonian_ci;
-
--- --------------------------------------------------------
-
---
--- Tabeli struktuur tabelile `töötajad`
---
-
-CREATE TABLE IF NOT EXISTS `töötajad` (
-  `ID` int(11) NOT NULL,
-  `eesnimi` varchar(256) COLLATE utf8_estonian_ci NOT NULL,
-  `perekonnanimi` varchar(256) COLLATE utf8_estonian_ci NOT NULL,
+  `firstname` varchar(256) COLLATE utf8_estonian_ci NOT NULL,
+  `lastname` varchar(256) COLLATE utf8_estonian_ci NOT NULL,
   `email` varchar(256) COLLATE utf8_estonian_ci NOT NULL,
-  `telefon` varchar(256) COLLATE utf8_estonian_ci NOT NULL,
-  `tööalgus` date NOT NULL,
+  `phonenr` varchar(256) COLLATE utf8_estonian_ci NOT NULL,
+  `workbeginning` date NOT NULL,
   `palk` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_estonian_ci;
 
@@ -136,46 +136,46 @@ CREATE TABLE IF NOT EXISTS `töötajad` (
 --
 
 --
--- Indeksid tabelile `kasutajad`
+-- Indeksid tabelile `merchandise`
 --
-ALTER TABLE `kasutajad`
+ALTER TABLE `merchandise`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indeksid tabelile `kaubad`
+-- Indeksid tabelile `orders`
 --
-ALTER TABLE `kaubad`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indeksid tabelile `ladu`
---
-ALTER TABLE `ladu`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indeksid tabelile `müük`
---
-ALTER TABLE `müük`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indeksid tabelile `statistika`
---
-ALTER TABLE `statistika`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indeksid tabelile `tellimused`
---
-ALTER TABLE `tellimused`
+ALTER TABLE `orders`
   ADD PRIMARY KEY (`ID`),
-  ADD UNIQUE KEY `laoid` (`laoid`);
+  ADD UNIQUE KEY `laoid` (`storage_id`);
 
 --
--- Indeksid tabelile `töötajad`
+-- Indeksid tabelile `sales`
 --
-ALTER TABLE `töötajad`
+ALTER TABLE `sales`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indeksid tabelile `statistics`
+--
+ALTER TABLE `statistics`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indeksid tabelile `storage`
+--
+ALTER TABLE `storage`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indeksid tabelile `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indeksid tabelile `workers`
+--
+ALTER TABLE `workers`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -183,62 +183,62 @@ ALTER TABLE `töötajad`
 --
 
 --
--- AUTO_INCREMENT tabelile `kasutajad`
+-- AUTO_INCREMENT tabelile `merchandise`
 --
-ALTER TABLE `kasutajad`
+ALTER TABLE `merchandise`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT tabelile `kaubad`
+-- AUTO_INCREMENT tabelile `orders`
 --
-ALTER TABLE `kaubad`
+ALTER TABLE `orders`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT tabelile `ladu`
+-- AUTO_INCREMENT tabelile `sales`
 --
-ALTER TABLE `ladu`
+ALTER TABLE `sales`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT tabelile `müük`
+-- AUTO_INCREMENT tabelile `storage`
 --
-ALTER TABLE `müük`
+ALTER TABLE `storage`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT tabelile `tellimused`
+-- AUTO_INCREMENT tabelile `users`
 --
-ALTER TABLE `tellimused`
+ALTER TABLE `users`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT tabelile `töötajad`
+-- AUTO_INCREMENT tabelile `workers`
 --
-ALTER TABLE `töötajad`
+ALTER TABLE `workers`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Tõmmistatud tabelite piirangud
 --
 
 --
--- Piirangud tabelile `kasutajad`
+-- Piirangud tabelile `merchandise`
 --
-ALTER TABLE `kasutajad`
-  ADD CONSTRAINT `kasutajad_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `müük` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `merchandise`
+  ADD CONSTRAINT `merchandise_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `storage` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Piirangud tabelile `kaubad`
+-- Piirangud tabelile `statistics`
 --
-ALTER TABLE `kaubad`
-  ADD CONSTRAINT `kaubad_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `ladu` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `statistics`
+  ADD CONSTRAINT `statistics_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `workers` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Piirangud tabelile `ladu`
+-- Piirangud tabelile `storage`
 --
-ALTER TABLE `ladu`
-  ADD CONSTRAINT `ladu_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `tellimused` (`laoid`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `storage`
+  ADD CONSTRAINT `storage_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `orders` (`storage_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Piirangud tabelile `statistika`
+-- Piirangud tabelile `users`
 --
-ALTER TABLE `statistika`
-  ADD CONSTRAINT `statistika_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `töötajad` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `sales` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
