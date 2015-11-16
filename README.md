@@ -40,7 +40,15 @@ Jaan on kala
 // fuk yoo swjkfjhjkshdfhewiuuifhlksjflk
 =======
 
-// loojad
-Jaan-Martin Kuusmann
-Joosep Jõeleht
->>>>>>> refs/remotes/origin/master
+**Multirootori leht**
+Loojad
+
+ - Jaan-Martin Kuusmann
+ - Joosep Jõeleht
+
+Probleemid
+
+ - php kood ei taha joost sõrmedest välja arvutini
+ - esmane tutvus teha isetegevusega poe loomisel
+ - saada praktikat nii html, css, php kui ka mysql-iga
+ - saada aru smth smth
