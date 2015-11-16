@@ -10,9 +10,6 @@
 ### Nõuded
 
 1. **README.md sisaldab:**
-    * suurelt projekti nime;
-    * rühma liikmete nimed;
-    * eesmärki (3-4 lauset, mis probleemi üritate lahendada);
     * kirjeldus (sihtrühm, eripära võrreldes teiste samalaadsete rakendustega - kirjeldada vähemalt 2-3 sarnast rakendust mida eeskujuks võtta);
     * funktsionaalsuse loetelu prioriteedi järjekorras, nt
         * v0.1 Saab teha kasutaja ja sisselogida
@@ -29,16 +26,6 @@
     * rakendus on piisava funktsionaalsusega ja turvaline;
     * kõik tiimi liikmed on panustanud rakenduse arendusprotsessi.
 
-## Abiks
-* **Testserver:** greeny.cs.tlu.ee, [tunneli loomise juhend](http://minitorn.tlu.ee/~jaagup/kool/java/kursused/09/veebipr/naited/greenytunnel/greenytunnel.pdf)
-* **Abiks tunninäited (rühmade lõikes):** [I rühm](https://github.com/veebiprogrammeerimine-2015s?utf8=%E2%9C%93&query=-I-ruhm), [II rühm](https://github.com/veebiprogrammeerimine-2015s?utf8=%E2%9C%93&query=-II-ruhm), [III rühm](https://github.com/veebiprogrammeerimine-2015s?utf8=%E2%9C%93&query=-III-ruhm)
-* **Stiilijuhend:** [Coding Style Guide](http://www.php-fig.org/psr/psr-2/)
-* **GIT õpetus:** [Become a git guru.](https://www.atlassian.com/git/tutorials/)
-* **Abimaterjale:** [Veebirakenduste loomine PHP ja MySQLi abil](http://minitorn.tlu.ee/~jaagup/kool/java/loeng/veebipr/veebipr1.pdf), [PHP with MySQL Essential Training] (http://www.lynda.com/MySQL-tutorials/PHP-MySQL-Essential-Training/119003-2.html)
-<<<<<<< HEAD
-<<<<<<< HEAD
-Jaan on kala
-// fuk yoo swjkfjhjkshdfhewiuuifhlksjflk
 =======
 
 **Multirootori leht**
@@ -54,4 +41,19 @@ Probleemid
  - saada praktikat nii html, css, php kui ka mysql-iga
  - saada aru smth smth
 =======
+Sihtrühm
 
+ - Absoluutselt kõik maailma inimesed
+Eripära
+ - ränk sissetulek
+ - Praktika võimalused igapäevasel
+ - Tulevikus võimalik edasiarendada firmale
+ - Sarnaseks võib võtta Apollo.ee, Atf.ee jnejne
+Funktsionaalsus
+ - v0.0 Kasutaja loomise võimalused
+ - v0.1 Sisselogimine
+ - v0.2 Ladude nimistu
+ - v0.3 Kaupade nimistu
+ - v0.4 Admini ligipääs
+ - v0.5 Lehekülje disain
+ - v0.6 Ostuvõimalus 
