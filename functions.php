@@ -7,9 +7,11 @@ function test_input($data) {
 }
 require_once("../config_global.php");
 require_once("user.class.create.php");
+require_once("user.class.login.php");
 session_start();
 
 	$connection = new mysqli($servername, $server_username, $server_password, $dbname);
 	
-	$User = new User($connection);
+	$userCreate = new userCreate($connection);
+	$userLogin = new userLogin($connection);
 	?>

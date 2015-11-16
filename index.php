@@ -7,7 +7,7 @@ if(isset($_GET["logout"])){
         header("Location: index.php");
     }
 if(isset($_SESSION['logged_in_user_id'])){
-		echo "Tere, ",$_SESSION['logged_in_user_email'], "<a href='?logout=1'> Logi välja</a>";
+		echo "Tere, ",$_SESSION['logged_in_user_username'], "<a href='?logout=1'> Logi välja</a>";
 
 	}
 

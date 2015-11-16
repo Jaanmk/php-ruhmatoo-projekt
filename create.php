@@ -9,8 +9,8 @@
 <?php
 	require_once("functions.php");
 	require_once("user.class.create.php");
-
-	
+$pw_error = "";
+$username_error = "";
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		if (empty($_POST["username"])) {
 		$username_error = "Name is required";
@@ -23,11 +23,13 @@
 		$pw_error = "Password is required";
 		} else {
 		$password = test_input($_POST["password"]);
+		$password = hash(sha512, $password);
 		}
 	}
-	if ($pw_error == "" and $username_error == ""){
-		$response = $User->createUser($username, $password);
-		
+	if ($_SERVER["REQUEST_METHOD"] == "POST"){
+		if ($pw_error == "" and $username_error == ""){
+			$response = $userCreate->createUser($username, $password);
+		}
 	}
 ?>
 
