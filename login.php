@@ -1,6 +1,6 @@
 <?php
 	require_once("functions.php");
-	require_once("user.class.login.php");
+	require_once("user.class.php");
 
 	
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -52,5 +52,5 @@ if(isset($response->success->user->id)){
 		<input name="password" type="password" placeholder="Password" > <?php echo $pw_error;?>
 		<br><br>
 		<input name="login" type="submit" value="Log In">
-	</form>
+	</form>ö2
 <?php require_once("footer.php"); ?>

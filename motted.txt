@@ -1,3 +1,0 @@
-tabel admin jah ei
-kui on admin
-sessionisse is_admin true false

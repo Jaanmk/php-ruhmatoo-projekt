@@ -6,12 +6,12 @@
 	} else {
 	echo "<li> Avaleht </li>";
 	}
-	/*if($page_file_name != "data.php") {
-	echo "<li><a href='data.php'> Lisa Q </a></li>";
+	if($page_file_name != "storage.php") {
+	echo "<li><a href='storage.php'> Lisa ladu </a></li>";
 	} else {
-	echo "<li> Lisa Q </li>";
+	echo "<li> Lisa ladu </li>";
 	 }
-	if($page_file_name != "table.php") {
+	/*if($page_file_name != "table.php") {
 	echo "<li><a href='table.php'> Tabel </a></li>";
 	} else {
 	echo "<li> Tabel </li>";
