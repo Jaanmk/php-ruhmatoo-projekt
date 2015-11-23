@@ -48,6 +48,7 @@ class userCreate {
 			
 		}
         $stmt->close();
+		
         return $response;
     }
 		
@@ -59,13 +60,13 @@ class userLogin {
         $this->connection = $connection;
 		}
 
-	function loginUser($username, $password){
+	function loginUser($username_to_db, $password_to_db){
 
 		$response = new StdClass();
 		
         $stmt = $this->connection->prepare("SELECT id FROM users WHERE username=?");
 		echo($this->connection->error);
-		$stmt->bind_param("s", $username);
+		$stmt->bind_param("s", $username_to_db);
 		$stmt->execute();
 		if(!$stmt->fetch()){
 			
@@ -78,11 +79,13 @@ class userLogin {
 			
 		}
 		$stmt->close();
-        $stmt = $this->connection->prepare("SELECT id, username FROM users WHERE username = ? AND password = ? ");
+        $stmt = $this->connection->prepare("SELECT id, username, privileges FROM users WHERE username = ? AND password = ? ");
 		echo($this->connection->error);
-        $stmt->bind_param("ss", $username, $password);
-		$stmt->bind_result($id_from_db, $username_from_db);
-        if($stmt->execute()){
+        $stmt->bind_param("ss", $username_to_db, $password_to_db);
+		$stmt->bind_result($id_from_db, $username_from_db, $privileges_from_db);
+        $stmt->execute();
+		
+		if($stmt->fetch()){
 			
 			$success = new StdClass();
 			$success->message = "Edukalt sisse logitud!!!";
@@ -90,11 +93,12 @@ class userLogin {
 			$user = new StdClass();
 			$user->id = $id_from_db;
 			$user->username = $username_from_db;
+			$user->privileges = $privileges_from_db;
 			
 			$success->user = $user;
 			
 			$response->success = $success;
-			
+
 			
 		} else {
 			echo($stmt->error);

@@ -6,11 +6,13 @@
 	} else {
 	echo "<li> Avaleht </li>";
 	}
-	if($page_file_name != "storage.php") {
-	echo "<li><a href='storage.php'> Lisa ladu </a></li>";
-	} else {
-	echo "<li> Lisa ladu </li>";
-	 }
+	if($_SESSION['logged_in_user_privileges']=='admin'){
+		if($page_file_name != "storage.php") {
+		echo "<li><a href='storage.php'> Lisa ladu </a></li>";
+		} else {
+		echo "<li> Lisa ladu </li>";
+		}
+	}
 	/*if($page_file_name != "table.php") {
 	echo "<li><a href='table.php'> Tabel </a></li>";
 	} else {

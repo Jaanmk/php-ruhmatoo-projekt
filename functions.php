@@ -15,4 +15,5 @@ session_start();
 	$userCreate = new userCreate($connection);
 	$userLogin = new userLogin($connection);
 	$storageCreate = new storageCreate($connection);
+
 	?>
