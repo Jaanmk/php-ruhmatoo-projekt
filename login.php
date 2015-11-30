@@ -39,29 +39,46 @@
 		header("Location: index.php");
 
 	}
+
 ?>
 <?php require_once("header.php"); ?>
 
-<div id="header" >
-
-	<p style="font-size:30px";>Log In</p>
-	<form action="<?php echo $_SERVER["PHP_SELF"]?> " method="post">
-
-		<?php if(isset($response->success)):	 ?>
-
-		<p><?=$response->success->message;?></p>
-
-		<?php	elseif(isset($response->error)): ?>
-
-		<p><?=$response->error->message;?></p>
-
-		<?php	endif; ?>
-
-		<p>Email/Username</p>
-		<input name="username" type="text" placeholder="example" value="<?php echo $username;?>" > <?php echo $username_error;?> <br>
-		<p>Password</p>
-		<input name="password" type="password" placeholder="Password" > <?php echo $pw_error;?>
-		<br><br>
-		<input name="login" type="submit" value="Log In">
-	</form>
+<div id="login" class="container-fluid">
+	<div class="row">
+				
+		<div class="col-sm-3">
+		<p style="font-size:30px";>Log In</p>
+			<form action="<?php echo $_SERVER["PHP_SELF"]?> " method="post">
+			
+		
+				<?php if(isset($response->success)):	 ?>
+		
+				<p><?=$response->success->message;?></p>
+		
+				<?php	elseif(isset($response->error)): ?>
+		
+				<p><?=$response->error->message;?></p>
+		
+				<?php	endif; ?>
+			<div class="form-group">
+				<p>Email/Username</p>
+				<input name="username" type="text" placeholder="example" value="<?php echo $username;?>" class="form-control"> <?php echo $username_error;?> <br>
+			</div>
+			<p>Password</p>
+			<div class="row">
+				<div class="col-lg-8">
+				
+					<div class="form-group">
+						<input name="password" type="password" placeholder="Password" class="form-control"> <?php echo $pw_error;?>
+						<br><br>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<button type="submit" class="btn btn-info btn-block">Login</button>
+				</div>
+			</div>
+			</form>
+		</div>
+	</div>
+</div>
 <?php require_once("footer.php"); ?>

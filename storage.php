@@ -1,19 +1,12 @@
 <?php
+	require_once("functions.php");
 	$page_title = "Storage";
 	$page_file_name = "storage.php";
-	if(isset($_GET["logout"])){
-        session_destroy();
-        header("Location: index.php");
-    }
-	if(isset($_SESSION['logged_in_user_id'])){
-		echo "Tere, ",$_SESSION['logged_in_user_username'], "<a href='?logout=1'> Logi välja</a>";
-}
-	
 ?>
 <?php
 	require_once("functions.php");
-$storage_name_error = "";
-$storage_address_error = "";
+	$storage_name_error = "";
+	$storage_address_error = "";
 
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		if (empty($_POST["storage_name"])) {
@@ -35,10 +28,7 @@ $storage_address_error = "";
 		}
 	}
 ?>
-
-
 <?php require_once("header.php"); ?>
-
 <div class="text">Create Storage</div>
 	<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 	<?php if(isset($response->success)):	 ?>
@@ -60,4 +50,5 @@ $storage_address_error = "";
 		<input name="create" type="submit" value="Create Storage">
 		<br><br>
 	</form>	
+	<p>
 <?php require_once("footer.php"); ?>

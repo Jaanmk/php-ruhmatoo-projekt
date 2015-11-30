@@ -8,6 +8,10 @@ function test_input($data) {
 require_once("../config_global.php");
 require_once("user.class.php");
 require_once("storage.class.php");
+require_once("userpage.class.php");
+
+
+
 session_start();
 
 	$connection = new mysqli($servername, $server_username, $server_password, $dbname);
@@ -15,5 +19,8 @@ session_start();
 	$userCreate = new userCreate($connection);
 	$userLogin = new userLogin($connection);
 	$storageCreate = new storageCreate($connection);
+	$itemCreate = new itemCreate($connection);
+	$userEdit = new userEdit($connection);
+	$userEditAdmin = new userEditAdmin($connection);
 
 	?>
