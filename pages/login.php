@@ -1,6 +1,8 @@
 <?php
-	require_once("functions.php");
-	require_once("user.class.php");
+	require_once($_SERVER['DOCUMENT_ROOT']."/functions/functions.php");
+	require_once($_SERVER['DOCUMENT_ROOT']."/classes/user.class.php");
+	$userLogin = new userLogin($connection);
+	
 
 	$pw_error = $username_error = "";
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -39,9 +41,10 @@
 		header("Location: index.php");
 
 	}
-
+var_dump(dirname(dirname(dirname(__FILE__))));
+var_dump(__DIR__);
 ?>
-<?php require_once("header.php"); ?>
+<?php require_once($_SERVER['DOCUMENT_ROOT']."/header.php"); ?>
 
 <div id="login" class="container-fluid">
 	<div class="row">
@@ -81,4 +84,4 @@
 		</div>
 	</div>
 </div>
-<?php require_once("footer.php"); ?>
+<?php require_once($_SERVER['DOCUMENT_ROOT']."/footer.php"); ?>

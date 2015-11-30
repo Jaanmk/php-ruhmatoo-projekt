@@ -11,40 +11,42 @@
       <a class="navbar-brand" href="#">Brand</a>
     </div>
 	
+	
+	
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="menyy">
 		<ul class="nav navbar-nav">
 			<?php
 			if($page_title == 'Avaleht'){
-				echo '<li class="active"><a href="index.php">Avaleht<span class="sr-only"></span></a></li>';
+				echo '<li class="active"><a href="/index.php">Avaleht<span class="sr-only"></span></a></li>';
 			} else {
-				echo '<li><a href="index.php">Avaleht</a></li>';
+				echo '<li><a href="/index.php">Avaleht</a></li>';
 			}
 			?>
 			<?php
 			if(!isset($_SESSION['logged_in_user_id'])){
 				if($page_title == 'LogIn'){
-					echo '<li class="active"><a href="login.php">Log In<span class="sr-only"></span></a></li>'; 
+					echo '<li class="active"><a href="/pages/login.php">Log In<span class="sr-only"></span></a></li>'; 
 				} else {
-					echo '<li><a href="login.php">Log In</a>';
+					echo '<li><a href="/pages/login.php">Log In</a>';
 				}
 			}
 			?>
 			<?php
 				if(!isset($_SESSION['logged_in_user_id'])){
 					if($page_title == 'Register'){
-						echo '<li class="active"><a href="create.php">Kasutaja loomine<span class="sr-only">(current)</span></a></li>';
+						echo '<li class="active"><a href=/pages/create.php>Kasutaja loomine<span class="sr-only">(current)</span></a></li>';
 					} else {
-						echo '<li><a href="create.php">Kasutaja loomine</a></li>';
+						echo '<li><a href=/pages/create.php>Kasutaja loomine</a></li>';
 					}
 				}
 			?>
 			<?php
 			if(isset($_SESSION['logged_in_user_id'])){
 				if($page_title == 'User edit'){
-					echo '<li class="active"><a href="userpage.php">Kasutaja andmete muutmine<span class="sr-only">(current)</span></a></li>';
+					echo '<li class="active"><a href="pages/userpage.php">Kasutaja andmete muutmine<span class="sr-only">(current)</span></a></li>';
 				} else {
-					echo '<li><a href="userpage.php">Kasutaja andmete muutmine</a></li>';
+					echo '<li><a href=/pages/userpage.php>Kasutaja andmete muutmine</a></li>';
 				}
 			}
 			?>
@@ -52,12 +54,12 @@
 		<ul class="nav navbar-nav navbar-right">
 			<?php
 			if($_SESSION['logged_in_user_privileges']=='admin'){
-echo '<li class="dropdown">';
+				echo '<li class="dropdown">';
 				echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin asjad <span class="caret"></span></a>';
 				echo '<ul class="dropdown-menu">';
-					echo '<li><a href="storage.php">Lisa ladu<span class="sr-only"></span></a></li>';
-					echo '<li><a href="userpageadmin.php">Kasutaja muutmine<span class="sr-only">(current)</span></a></li>';
-					echo '<li><a href="storageadditem.php">Add item<span class="sr-only">(current)</span></a></li>';
+					echo '<li><a href="pages/storage.php">Lisa ladu<span class="sr-only"></span></a></li>';
+					echo '<li><a href="pages/userpageadmin.php">Kasutaja muutmine<span class="sr-only">(current)</span></a></li>';
+					echo '<li><a href="pages/storageadditem.php">Add item<span class="sr-only">(current)</span></a></li>';
 
 				echo '</ul>';
 			echo '</li>';

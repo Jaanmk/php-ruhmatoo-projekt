@@ -2,10 +2,10 @@
 	require_once("functions.php");
 	$page_title = "Storage Add item";
 	$page_file_name = "storageadditem.php";
+	$itemCreate = new itemCreate($connection);
 ?>
 
 <?php
-	require_once("functions.php");
 	$merchandisename_error = "";
 	$merchandiseprice_error = "";
 	$merchandiseweight_error = "";

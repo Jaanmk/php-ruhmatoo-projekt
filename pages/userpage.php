@@ -1,19 +1,18 @@
 <?php
-	require_once("functions.php");
+	
 	$page_title = "User edit";
 	$page_file_name = "userpage.php";
-if(isset($_GET["logout"])){
+	require_once($_SERVER['DOCUMENT_ROOT']."/functions/functions.php");
+	require_once($_SERVER['DOCUMENT_ROOT']."/pages/userpage.class.php");
+	if(isset($_GET["logout"])){
         session_destroy();
-        header("Location: index.php");
+        header("Location: $_SERVER['DOCUMENT_ROOT'].index.php");
     }	
-	
-?>
-<?php
-	require_once("functions.php");
+	$userEdit = new userEdit($connection);
+
 	$userfirstname_error = "";
 	$userlastname_error = "";
 	$useraddress_error = "";
-	$_POST["userusername"] = $_SESSION["logged_in_user_id"];
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		if (empty($_POST["userfirstname"])) {
 		$userfirstname_error = "FirstName is required";
@@ -32,19 +31,13 @@ if(isset($_GET["logout"])){
 		} else {
 		$useraddress = test_input($_POST["useraddress"]);
 		}
-
-		$userusername = $_SESSION['logged_in_user_id'];
 	
 		if ($userfirstname_error == "" and $userlastname_error == "" and $useraddress_error==""){
 			$response = $userEdit->editUser($userfirstname, $userlastname, $useraddress);
 		
 		}
 	}
-	
-
-?>
-
-<?php require_once("header.php"); ?>
+	require_once("$_SERVER['DOCUMENT_ROOT'].header.php"); ?>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-3">
@@ -74,4 +67,4 @@ if(isset($_GET["logout"])){
 </div>
 
 
-<?php require_once("footer.php"); ?>
+<?php require_once("$_SERVER['DOCUMENT_ROOT'].footer.php"); ?>

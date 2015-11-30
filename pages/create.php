@@ -1,6 +1,8 @@
 <?php
-	require_once("functions.php");
+	require_once($_SERVER['DOCUMENT_ROOT']."/functions/functions.php");
 	require_once("user.class.php");
+	$userCreate = new userCreate($connection);
+	$userLogin = new userLogin($connection);
 $pw_error = "";
 $username_error = "";
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {

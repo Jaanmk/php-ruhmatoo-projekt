@@ -7,11 +7,11 @@
         session_destroy();
         header("Location: index.php");
     }
+	$userEditAdmin = new userEditAdmin($connection);
 
 ?>
 
 <?php
-	require_once("functions.php");
 	$userfirstname_error = "";
 	$userlastname_error = "";
 	$useraddress_error = "";
@@ -49,6 +49,17 @@
 	}
 	if(isset($_POST["selectusername"])){
 			$response = $userEditAdmin->readUserAdmin($selectusername);
+			
+			
+			$userfirstname = $response->user->userfirstname;
+			$userlastname = $response->user->userlastname;
+			$useraddress = $response->user->useraddress;
+			$creationdate = $response->user->creationdate;
+			$privileges = $response->user->privileges;
+			$userusername = $response->user->username;
+			
+			
+			
 		}
 	if(isset($_POST["change"])){
 		if ($userfirstname_error == "" and $userlastname_error == "" and $useraddress_error==""){
@@ -57,12 +68,7 @@
 		}
 	}
 
-$userfirstname = $response->user->userfirstname;
-$userlastname = $response->user->userlastname;
-$useraddress = $response->user->useraddress;
-$creationdate = $response->user->creationdate;
-$privileges = $response->user->privileges;
-$userusername = $response->user->username;
+
 
 
 ?>
@@ -85,7 +91,7 @@ $userusername = $response->user->username;
 		
 		
 		<?php 
-		if(isset($response->success->message)){
+		if(isset($userusername)){
 			echo "<label>Kasutaja on: ".$_SESSION['selectusername']."</label> <br>";
 			echo '<button type="submit" name="change_user" class="btn btn-info btn-block ">Muuda kasutajat</button>';
 

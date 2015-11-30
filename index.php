@@ -1,5 +1,5 @@
 <?php
-	require_once("functions.php");
+	require_once($_SERVER['DOCUMENT_ROOT']."/functions/functions.php");
 	$page_title = "Avaleht";
 	$page_file_name = "index.php";
 	if(isset($_GET["logout"])){
@@ -8,9 +8,14 @@
     }
 
 ?>
-
+<?
+	var_dump(dirname(dirname(dirname(__FILE__))));
+	
+	var_dump(__DIR__."../");
+  //echo $_SERVER['SCRIPT_FILENAME'];?>
 <?php require_once("header.php"); ?>
     <div class="container-fluid">
+	<?php //var_dump( $_SERVER);?>
 		<div class="row">
 			<div class="col-sm-6 col-sm-push-6">
 				<br>

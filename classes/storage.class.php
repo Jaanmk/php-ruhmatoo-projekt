@@ -1,5 +1,5 @@
 <?php 
-require_once("../config_global.php");
+require_once($_SERVER['DOCUMENT_ROOT']."../config_global.php");
 	
 class storageCreate {
     private $connection;

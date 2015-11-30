@@ -1,10 +1,10 @@
 <?php
-	require_once("functions.php");
+	require_once($_SERVER['DOCUMENT_ROOT']."functions.php");
 	$page_title = "Storage";
 	$page_file_name = "storage.php";
+	$storageCreate = new storageCreate($connection);
 ?>
 <?php
-	require_once("functions.php");
 	$storage_name_error = "";
 	$storage_address_error = "";
 
